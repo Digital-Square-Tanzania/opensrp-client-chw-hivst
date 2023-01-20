@@ -49,16 +49,26 @@
     <string name="edit">HARIRI</string>
     <string name="male">Me</string>
     <string name="female">Ke</string>
-    <string name="hivst">Self Testing</string>
-    <string name="hivst_results_history">HIVST Results History</string>
-    <string name="kit_for">Kit For:</string>
-    <string name="hivst_result">HIVST Result:</string>
-    <string name="hivst_kit_code">HIVST KIT Code:</string>
+    <string name="hivst">Jipime</string>
+    <string name="provide_self_testing_kits">Ugawaji wa Vitepe vya Jipime</string>
+    <string name="self_testing_results_title">Majibu ya Jipime</string>
+    <string name="self_testing_results_subtitle">Rekodi majibu ya Jipime</string>
+    <string name="self_testing_client_history_title">Historia ya Jipime ya Mteja</string>
+    <string name="self_testing_client_history_subtitle">Angalia historia ya jipime</string>
+    <string name="hivst_mobilization">Uhamasishaji</string>
+    <string name="hivst_results_history">Historia ya majibu ya Jipime</string>
+    <string name="kit_for">Kitepe cha:</string>
+    <string name="hivst_result">Majibu ya Jipime</string>
+    <string name="hivst_kit_code">Msimbo wa kitepe cha JIPIME:</string>
     <string name="record_result">Record Result</string>
-    <string name="self_testing_sessions">Self Testing Sessions</string>
-    <string name="mobilization_session_participants">Participants: %s</string>
-    <string name="mobilization_condoms_issued">Condoms Issued: %s</string>
-    <string name="mobilziation_session_date">Date: %s</string>
+    <string name="self_testing_sessions">Vipindi vya uhamasishaji wa jipime</string>
+    <string name="mobilization_session_participants">Walio hamasishwa: %s</string>
+    <string name="mobilization_condoms_issued">Kondom zilizogaiwa: %s</string>
+    <string name="mobilziation_session_date">Tarehe: %s</string>
     <string name="refer_to_facility">Refer</string>
-
+    <string name="collectiondate">Tarehe ya ukusanyaji:</string>
+    <string name="hivst_session">Kipindi cha JIPIME</string>
+    <string name="participants">Waliohamasishwa:</string>
+    <string name="date">Tarehe:</string>
+    <string name="issued_condoms">Kondom zilizogaiwa:</string>
 </resources>

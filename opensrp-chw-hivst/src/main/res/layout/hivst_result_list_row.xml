@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="Collection Date:"
+                android:text="@string/collectiondate"
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/register_list_desc_size"
                 android:visibility="visible" />

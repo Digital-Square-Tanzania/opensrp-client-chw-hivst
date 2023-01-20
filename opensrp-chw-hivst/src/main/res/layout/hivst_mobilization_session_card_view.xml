@@ -41,7 +41,7 @@
                 android:textColor="@android:color/black"
 
                 android:visibility="visible"
-                tools:text="Participants:" />
+                tools:text="@string/participants" />
 
             <TextView
                 android:id="@+id/mobilization_session_date"
@@ -55,7 +55,7 @@
                 android:singleLine="false"
                 android:textColor="@android:color/black"
                 android:visibility="visible"
-                tools:text="Date:" />
+                tools:text="@string/date" />
 
         </LinearLayout>
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/iv_mobilization_session"
-            android:text="HIVST Session"
+            android:text="@string/hivst_session"
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/black"
@@ -86,7 +86,7 @@
             android:singleLine="false"
             android:textColor="@android:color/black"
             android:visibility="visible"
-            tools:text="Condoms Issued:" />
+            tools:text="@string/issued_condoms" />
 
 
     </RelativeLayout>
