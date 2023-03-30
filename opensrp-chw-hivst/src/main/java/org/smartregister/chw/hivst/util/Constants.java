@@ -45,6 +45,7 @@ public interface Constants {
         String ACTION = "ACTION";
         String HIVST_FORM_NAME = "HIVST_FORM_NAME";
         String GENDER = "GENDER";
+        String AGE = "AGE";
 
     }
 

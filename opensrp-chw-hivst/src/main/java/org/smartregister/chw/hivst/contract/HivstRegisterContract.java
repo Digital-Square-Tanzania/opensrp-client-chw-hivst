@@ -15,7 +15,7 @@ public interface HivstRegisterContract {
 
     interface Presenter extends BaseRegisterContract.Presenter {
 
-        void startForm(String formName, String entityId, String metadata, String currentLocationId, String gender) throws Exception;
+        void startForm(String formName, String entityId, String metadata, String currentLocationId, String gender, int age) throws Exception;
 
         void saveForm(String jsonString);
 
@@ -23,7 +23,7 @@ public interface HivstRegisterContract {
 
     interface Model {
 
-        JSONObject getFormAsJson(String formName, String entityId, String currentLocationId, String gender) throws Exception;
+        JSONObject getFormAsJson(String formName, String entityId, String currentLocationId, String gender, int age) throws Exception;
 
     }
 
