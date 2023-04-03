@@ -21,6 +21,7 @@ public class DBConstants {
         public static final String KIT_CODE = "kit_code";
         public static final String KIT_FOR = "kit_for";
         public static final String HIVST_RESULT = "hivst_result";
+        public static final String CLIENT_TESTING_APPROACH = "client_testing_approach";
         public static final String MOBILIZATION_DATE = "mobilization_date";
         public static final String FEMALE_CLIENTS_REACHED = "female_clients_reached";
         public static final String MALE_CLIENTS_REACHED = "male_clients_reached";

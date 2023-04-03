@@ -89,7 +89,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
 
             viewHolder.kitCode.setText(kitCode);
             viewHolder.kitFor.setText(context.getString(context.getResources().getIdentifier("kit_for_" + kitFor, "string", context.getPackageName())));
-            viewHolder.collectionDate.setText(df.format(Long.parseLong(collectionDate)));
+            viewHolder.collectionDate.setText(collectionDate);
             viewHolder.recordHivstResult.setTag(pc);
             viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultViewFragment.CLICK_VIEW_NORMAL);
             viewHolder.recordHivstResult.setOnClickListener(onClickListener);
