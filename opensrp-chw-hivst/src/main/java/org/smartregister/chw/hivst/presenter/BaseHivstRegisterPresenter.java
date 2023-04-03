@@ -25,12 +25,12 @@ public class BaseHivstRegisterPresenter implements HivstRegisterContract.Present
     }
 
     @Override
-    public void startForm(String formName, String entityId, String metadata, String currentLocationId, String gender) throws Exception {
+    public void startForm(String formName, String entityId, String metadata, String currentLocationId, String gender, int age) throws Exception {
         if (StringUtils.isBlank(entityId)) {
             return;
         }
 
-        JSONObject form = model.getFormAsJson(formName, entityId, currentLocationId, gender);
+        JSONObject form = model.getFormAsJson(formName, entityId, currentLocationId, gender, age);
         getView().startFormActivity(form);
     }
 
