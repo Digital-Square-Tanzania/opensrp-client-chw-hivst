@@ -70,7 +70,7 @@ public class BaseHivstRegisterPresenter implements HivstRegisterContract.Present
 //        implement
     }
 
-    private HivstRegisterContract.View getView() {
+    protected HivstRegisterContract.View getView() {
         if (viewReference != null)
             return viewReference.get();
         else

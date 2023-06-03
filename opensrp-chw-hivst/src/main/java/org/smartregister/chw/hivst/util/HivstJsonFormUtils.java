@@ -160,7 +160,7 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
     private static void createHTSRegistrationEvent(String entityId, AllSharedPreferences allSharedPreferences) {
         Event baseEvent = getBaseEvent(entityId, allSharedPreferences, Constants.EVENT_TYPE.HTS_REGISTRATION);
         // <--- Needed to register client in hts to simulate client is a referred client ---->
-        baseEvent.addObs(new Obs().withFormSubmissionField("chw_referral_service").withValue("Suspected HIV")
+        baseEvent.addObs(new Obs().withFormSubmissionField("chw_referral_service").withValue("Conventional HIV Test")
                 .withFieldCode("chw_referral_service").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
         // <--- Needed to register client in hts ---->
         try {
