@@ -45,6 +45,8 @@ public class BaseHivstResultsFragmentModel implements HivstResultsFragmentContra
     public String mainSelect(@NonNull String tableName, @NonNull String mainCondition) {
         SmartRegisterQueryBuilder queryBuilder = new SmartRegisterQueryBuilder();
         queryBuilder.selectInitiateMainTable(tableName, mainColumns(tableName), DBConstants.KEY.BASE_ENTITY_ID);
+        queryBuilder.customJoin(String.format("INNER JOIN %s  ON  %s.%s = %s.%s AND %s.%s = %s.%s ",
+                Constants.TABLES.HIVST_FOLLOWUP,tableName, DBConstants.KEY.ENTITY_ID,Constants.TABLES.HIVST_FOLLOWUP, DBConstants.KEY.ENTITY_ID, Constants.TABLES.HIVST_FOLLOWUP,DBConstants.KEY.COLLECTION_DATE, tableName, DBConstants.KEY.COLLECTION_DATE));
         return queryBuilder.mainCondition(mainCondition);
     }
 
@@ -54,6 +56,7 @@ public class BaseHivstResultsFragmentModel implements HivstResultsFragmentContra
         columnList.add(tableName + "." + DBConstants.KEY.BASE_ENTITY_ID + " as " + DBConstants.KEY.ENTITY_ID);
         columnList.add(tableName + "." + DBConstants.KEY.ENTITY_ID + " as relationalid");
         columnList.add(tableName + "." + DBConstants.KEY.KIT_CODE);
+        columnList.add(DBConstants.KEY.CLIENT_TESTING_APPROACH);
         columnList.add(tableName + "." + DBConstants.KEY.KIT_FOR);
         columnList.add(tableName  + "." + DBConstants.KEY.HIVST_RESULT);
         columnList.add(tableName + "." + DBConstants.KEY.COLLECTION_DATE);

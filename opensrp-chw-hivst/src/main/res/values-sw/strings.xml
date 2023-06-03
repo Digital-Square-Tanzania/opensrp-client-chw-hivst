@@ -78,6 +78,7 @@
     <string name="hivst_result_non_reactive">Hana viashishiri</string>
     <string name="hivst_result_invalid">Jibu batili</string>
     <string name="hivst_result_wastage">Upotevu</string>
-    <string name="hivst_result_not_returned">Results not returned</string>
-    <string name="hivst_result_client_did_not_disclose">Client Did Not Disclose</string>
+    <string name="hivst_result_not_returned">Majibu hayajarudishwa</string>
+    <string name="hivst_result_client_did_not_disclose">Mteja hakutoa majibu</string>
+    <string name="hivst_result_client_not_found">Mteja hakupatikana</string>
 </resources>

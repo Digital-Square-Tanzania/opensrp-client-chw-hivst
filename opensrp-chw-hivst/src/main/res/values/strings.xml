@@ -78,6 +78,8 @@
     <string name="hivst_result_wastage">Wastage</string>
     <string name="hivst_result_not_returned">Results not returned</string>
     <string name="hivst_result_client_did_not_disclose">Client Did Not Disclose</string>
+    <string name="hivst_result_client_not_found">Client was not found</string>
+    <string name="hivst_provisition_date">Provision Date:</string>
     <string name="collectiondate">Collection Date:</string>
     <string name="hivst_session">HIVST Session</string>
     <string name="participants">Participants:</string>

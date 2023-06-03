@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hivst.fragment.BaseHivstResultViewFragment;
 import org.smartregister.chw.hivst.util.DBConstants;
@@ -29,7 +31,6 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Set;
 
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResultsViewProvider.RegisterViewHolder> {
@@ -89,7 +90,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
 
             viewHolder.kitCode.setText(kitCode);
             viewHolder.kitFor.setText(context.getString(context.getResources().getIdentifier("kit_for_" + kitFor, "string", context.getPackageName())));
-            viewHolder.collectionDate.setText(df.format(Long.parseLong(collectionDate)));
+            viewHolder.collectionDate.setText(collectionDate);
             viewHolder.recordHivstResult.setTag(pc);
             viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultViewFragment.CLICK_VIEW_NORMAL);
             viewHolder.recordHivstResult.setOnClickListener(onClickListener);

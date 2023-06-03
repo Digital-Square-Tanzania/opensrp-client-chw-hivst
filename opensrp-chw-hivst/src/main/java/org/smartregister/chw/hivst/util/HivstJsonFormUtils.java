@@ -160,7 +160,7 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
     private static void createHTSRegistrationEvent(String entityId, AllSharedPreferences allSharedPreferences) {
         Event baseEvent = getBaseEvent(entityId, allSharedPreferences, Constants.EVENT_TYPE.HTS_REGISTRATION);
         // <--- Needed to register client in hts to simulate client is a referred client ---->
-        baseEvent.addObs(new Obs().withFormSubmissionField("chw_referral_service").withValue("Suspected HIV")
+        baseEvent.addObs(new Obs().withFormSubmissionField("chw_referral_service").withValue("Conventional HIV Test")
                 .withFieldCode("chw_referral_service").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
         // <--- Needed to register client in hts ---->
         try {
@@ -172,8 +172,7 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
 
     private static void createHivstResultRegistratioEventForClient(JSONObject jsonForm, String entityId, AllSharedPreferences allSharedPreferences) {
         String kitCode = getFieldJSONObject(fields(jsonForm, STEP_ONE), "kit_code").optString("value", "");
-        DateTime now = new DateTime();
-        String collectionDate = String.valueOf(now.getMillis());
+        String collectionDate = getFieldJSONObject(fields(jsonForm, STEP_ONE), "collection_date").optString("value", "");
         processRegistrationResult(entityId, allSharedPreferences, kitCode, "client", collectionDate);
     }
 
@@ -182,8 +181,7 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         JSONArray vals = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_issued_for").getJSONArray("value");
         String kitCodeForPartner = getFieldJSONObject(fields(jsonForm, STEP_ONE), "sexual_partner_kit_code").optString("value", "");
         String kitCodeForPeer = getFieldJSONObject(fields(jsonForm, STEP_ONE), "peer_friend_kit_code").optString("value", "");
-        DateTime now = new DateTime();
-        String collectionDate = String.valueOf(now.getMillis());
+        String collectionDate = getFieldJSONObject(fields(jsonForm, STEP_ONE), "collection_date").optString("value", "");
 
         for (int i = 0; i < vals.length(); i++) {
             String kitFor = vals.get(i).toString();
