@@ -81,4 +81,8 @@
     <string name="hivst_result_not_returned">Majibu hayajarudishwa</string>
     <string name="hivst_result_client_did_not_disclose">Mteja hakutoa majibu</string>
     <string name="hivst_result_client_not_found">Mteja hakupatikana</string>
+    <string name="pending_hivst_registration">Usajili wa mteja kwenye huduma za JIPIME unasibiriwa</string>
+    <string name="pending_hivst_followup">Ugawaji wa Kitepe cha JIPIME unasubiriwa</string>
+    <string name="register_client">Msajili Mteja</string>
+    <string name="issue_selft_testing_kits">Gawa</string>
 </resources>

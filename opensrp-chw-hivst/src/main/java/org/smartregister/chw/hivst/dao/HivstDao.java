@@ -153,4 +153,16 @@ public class HivstDao extends AbstractDao {
 
         return res.get(0);
     }
+
+    public static String clientLastFollowup(String baseEntityId) {
+        String sql = "SELECT collection_date FROM ec_hivst_followup p " +
+                " WHERE p.entity_id = '" + baseEntityId + "' ORDER BY collection_date DESC LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "collection_date");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0);
+        }
+        return null;
+    }
 }
