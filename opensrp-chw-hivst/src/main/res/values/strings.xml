@@ -85,5 +85,9 @@
     <string name="participants">Participants:</string>
     <string name="date">Date:</string>
     <string name="issued_condoms">Condoms Issued:</string>
+    <string name="pending_hivst_registration">Pending HIVST Registration</string>
+    <string name="pending_hivst_followup">Pending Distribution of HIVST Kits</string>
+    <string name="register_client">Register</string>
+    <string name="issue_selft_testing_kits">Distribute</string>
 
 </resources>
