@@ -104,9 +104,7 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
                 }
                 if (extraKitsGivenObj != null) {
                     try {
-                        boolean isVisible = extraKitsGivenObj.getBoolean("is_visible");
-                        if (isVisible)
-                            extraKits = extraKitsGivenObj.getString("value").equalsIgnoreCase("yes");
+                        extraKits = extraKitsGivenObj.getString("value").equalsIgnoreCase("yes");
                     }catch (Exception e){
                        Timber.e(e);
                     }
