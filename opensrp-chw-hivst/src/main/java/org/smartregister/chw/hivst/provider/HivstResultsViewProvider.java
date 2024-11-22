@@ -78,8 +78,13 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
                     viewHolder.hivstResult.setText(hivstResult);
                 }
 
-                viewHolder.hivstWrapper.setVisibility(View.VISIBLE);
-                viewHolder.recordHivstResult.setVisibility(View.GONE);
+                if (hivstResult.equalsIgnoreCase("not_returned")) {
+                    viewHolder.hivstWrapper.setVisibility(View.VISIBLE);
+                    viewHolder.recordHivstResult.setVisibility(View.VISIBLE);
+                } else {
+                    viewHolder.hivstWrapper.setVisibility(View.VISIBLE);
+                    viewHolder.recordHivstResult.setVisibility(View.GONE);
+                }
             }
 
             if (StringUtils.isBlank(kitCode)) {
