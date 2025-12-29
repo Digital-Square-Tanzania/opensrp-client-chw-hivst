@@ -95,8 +95,6 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
                 JSONObject extraKitsGivenObj = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_required");
                 if (selfTestKitGivenObj != null) {
                     try {
-                        boolean isVisible = selfTestKitGivenObj.getBoolean("is_visible");
-                        if (isVisible)
                             selfTestKitGiven = selfTestKitGivenObj.getString("value").equalsIgnoreCase("yes");
                     }catch (Exception e){
                         Timber.e(e);
@@ -105,7 +103,7 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
                 if (extraKitsGivenObj != null) {
                     try {
                         extraKits = extraKitsGivenObj.getString("value").equalsIgnoreCase("yes");
-                    }catch (Exception e){
+                    } catch (Exception e){
                        Timber.e(e);
                     }
                 }
