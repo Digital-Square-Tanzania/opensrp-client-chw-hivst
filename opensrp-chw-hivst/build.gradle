@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath('com.android.tools.build:gradle:3.6.4') {
+        classpath('com.android.tools.build:gradle:4.0.2') {
             transitive = true
             exclude group: 'org.apache.httpcomponents', module: 'httpmime'
         }
@@ -22,7 +22,7 @@ plugins {
 description = 'OpenSRP chw hivst library'
 
 jacoco {
-    toolVersion = "0.8.0"
+    toolVersion = "0.8.8"
 }
 
 def githubProperties = new Properties()
@@ -251,11 +251,11 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
     def debugTree = fileTree(dir: "$project.buildDir/intermediates/javac/debug/classes", excludes: fileFilter)
     def mainSrc = "$project.projectDir/src/main/java"
 
-    sourceDirectories = files([mainSrc])
-    classDirectories = files([debugTree])
-    executionData = fileTree(dir: project.buildDir, includes: [
+    sourceDirectories.setFrom(files([mainSrc]))
+    classDirectories.setFrom(files([debugTree]))
+    executionData.setFrom(fileTree(dir: project.buildDir, includes: [
             'jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec'
-    ])
+    ]))
 }
 
 coveralls {
