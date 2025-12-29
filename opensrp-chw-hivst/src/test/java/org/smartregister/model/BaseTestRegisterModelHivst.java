@@ -23,9 +23,19 @@ public class BaseTestRegisterModelHivst {
     public void checkJSon() {
         try {
             JSONObject jsonObject = new JSONObject();
-            Mockito.when(baseHivstRegisterModel.getFormAsJson(Mockito.anyString(), Mockito.anyString(), Mockito.anyString()))
+            Mockito.when(baseHivstRegisterModel.getFormAsJson(
+                    Mockito.anyString(),
+                    Mockito.anyString(),
+                    Mockito.anyString(),
+                    Mockito.anyString(),
+                    Mockito.anyInt()))
                     .thenReturn(jsonObject);
-            Assert.assertEquals(jsonObject, baseHivstRegisterModel.getFormAsJson(Mockito.anyString(), Mockito.anyString(), Mockito.anyString()));
+            Assert.assertEquals(jsonObject, baseHivstRegisterModel.getFormAsJson(
+                    Mockito.anyString(),
+                    Mockito.anyString(),
+                    Mockito.anyString(),
+                    Mockito.anyString(),
+                    Mockito.anyInt()));
         } catch (Exception e) {
             e.printStackTrace();
         }

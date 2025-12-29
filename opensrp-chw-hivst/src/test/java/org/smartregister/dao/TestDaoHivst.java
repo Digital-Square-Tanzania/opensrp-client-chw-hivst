@@ -29,9 +29,9 @@ public class TestDaoHivst extends HivstDao {
     }
 
     @Test
-    public void testGetHivstTestDate() {
+    public void testClientLastFollowup() {
         Mockito.doReturn(database).when(repository).getReadableDatabase();
-        HivstDao.getHivstTestDate("123456");
+        HivstDao.clientLastFollowup("123456");
         Mockito.verify(database).rawQuery(Mockito.anyString(), Mockito.any());
     }
 
@@ -43,4 +43,3 @@ public class TestDaoHivst extends HivstDao {
         Assert.assertFalse(registered);
     }
 }
-

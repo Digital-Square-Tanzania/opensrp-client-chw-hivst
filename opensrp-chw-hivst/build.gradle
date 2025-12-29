@@ -217,9 +217,8 @@ dependencies {
     implementation 'com.google.guava:guava:20.0'
     implementation 'id.zelory:compressor:1.0.4'
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:3.0.0'
-    testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:3.12.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     androidTestImplementation 'androidx.annotation:annotation:1.0.0'
@@ -230,7 +229,7 @@ dependencies {
         resolutionStrategy.force 'com.android.support:support-annotations:23.1.0'
     }
     // PowerMock
-    def powerMockVersion = '1.7.1'
+    def powerMockVersion = '2.0.9'
     testImplementation "org.powermock:powermock-module-junit4:$powerMockVersion"
     testImplementation "org.powermock:powermock-module-junit4-rule:$powerMockVersion"
     testImplementation "org.powermock:powermock-api-mockito2:$powerMockVersion"

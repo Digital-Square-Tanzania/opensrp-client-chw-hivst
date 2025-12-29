@@ -33,16 +33,16 @@ public class BaseTestRegisterPresenterHivst {
 
     @Test
     public void startFormWhenEntityIdIsNull() throws Exception {
-        presenter.startForm("formName", "", "121212121212", "231231231231");
+        presenter.startForm("formName", "", "121212121212", "231231231231", "female", 24);
         Mockito.verify(baseView, Mockito.never()).startFormActivity(null);
     }
 
     @Test
     public void startFormWhenEntityIdIsNotNull() throws Exception {
-        JSONObject form = model.getFormAsJson("formName", "12131212", "231231231231");
-        Mockito.when(model.getFormAsJson("formName", "12131212", "231231231231")).thenReturn(form);
+        JSONObject form = model.getFormAsJson("formName", "12131212", "231231231231", "female", 24);
+        Mockito.when(model.getFormAsJson("formName", "12131212", "231231231231", "female", 24)).thenReturn(form);
         Mockito.doNothing().when(baseView).startFormActivity(form);
-        presenter.startForm("formName", "12131212", "121212121212", "231231231231");
+        presenter.startForm("formName", "12131212", "121212121212", "231231231231", "female", 24);
         Mockito.verify(baseView).startFormActivity(form);
     }
 

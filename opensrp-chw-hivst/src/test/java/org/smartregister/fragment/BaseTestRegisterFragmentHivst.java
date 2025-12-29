@@ -29,7 +29,8 @@ public class BaseTestRegisterFragmentHivst {
         Whitebox.invokeMethod(baseHivstRegisterFragment, "openProfile", client);
         PowerMockito.mockStatic(BaseHivstProfileActivity.class);
         BaseHivstProfileActivity.startProfileActivity(null, null);
-        PowerMockito.verifyStatic(times(1));
+        PowerMockito.verifyStatic(BaseHivstProfileActivity.class, times(1));
+        BaseHivstProfileActivity.startProfileActivity(null, null);
 
     }
 }
