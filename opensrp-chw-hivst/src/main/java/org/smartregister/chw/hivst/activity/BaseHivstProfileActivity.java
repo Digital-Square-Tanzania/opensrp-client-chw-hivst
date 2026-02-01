@@ -254,9 +254,8 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
     @SuppressLint("DefaultLocale")
     @Override
     public void setProfileViewWithData() {
-        int age = new Period(new DateTime(memberObject.getAge()), new DateTime()).getYears();
         textViewName.setText(String.format("%s %s %s, %d", memberObject.getFirstName(),
-                memberObject.getMiddleName(), memberObject.getLastName(), age));
+                memberObject.getMiddleName(), memberObject.getLastName(), memberObject.getAge()));
         textViewGender.setText(HivstUtil.getGenderTranslated(this, memberObject.getGender()));
         textViewLocation.setText(memberObject.getAddress());
         textViewUniqueID.setText(memberObject.getUniqueId());
