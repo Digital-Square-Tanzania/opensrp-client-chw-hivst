@@ -1,5 +1,8 @@
 package org.smartregister.chw.hivst.domain;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -40,6 +43,7 @@ public class MemberObject implements Serializable {
     private String ancMember;
     private String pncMember;
     private String hivstFollowUpDate;
+    private String dob;
 
     public MemberObject() {
     }
@@ -67,12 +71,16 @@ public class MemberObject implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getAge() {
-        return age;
+    public int getAge() {
+        return new Period(new DateTime(dob), new DateTime()).getYears();
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getAddress() {
