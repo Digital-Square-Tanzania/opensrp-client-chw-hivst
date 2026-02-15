@@ -18,6 +18,7 @@ import org.smartregister.util.JsonFormUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import timber.log.Timber;
 
@@ -88,6 +89,11 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
             encounter_type = Constants.TABLES.HIVST_REGISTER;
         } else if (Constants.EVENT_TYPE.HIVST_ISSUE_KITS.equals(encounter_type)) {
             encounter_type = Constants.TABLES.HIVST_FOLLOWUP;
+            Event issueKitsEvent = org.smartregister.util.JsonFormUtils.createEvent(fields, getJSONObject(jsonForm, METADATA), formTag(allSharedPreferences), entityId, getString(jsonForm, ENCOUNTER_TYPE), encounter_type);
+            List<String> sourceFormSubmissionIds = new ArrayList<>();
+            if (issueKitsEvent != null && StringUtils.isNotBlank(issueKitsEvent.getFormSubmissionId())) {
+                sourceFormSubmissionIds.add(issueKitsEvent.getFormSubmissionId());
+            }
             try {
                 boolean selfTestKitGiven = false;
                 boolean extraKits = false;
@@ -108,14 +114,15 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
                     }
                 }
                 if (selfTestKitGiven) {
-                    createHivstResultRegistratioEventForClient(jsonForm, entityId, allSharedPreferences);
+                    createHivstResultRegistratioEventForClient(jsonForm, entityId, allSharedPreferences, sourceFormSubmissionIds);
                 }
                 if (extraKits) {
-                    createHivstResultRegistrationEventForExtraKits(jsonForm, entityId, allSharedPreferences);
+                    createHivstResultRegistrationEventForExtraKits(jsonForm, entityId, allSharedPreferences, sourceFormSubmissionIds);
                 }
             } catch (Exception e) {
                 Timber.e(e);
             }
+            return issueKitsEvent;
         } else if (Constants.EVENT_TYPE.HIVST_RESULTS.equals(encounter_type)) {
             encounter_type = Constants.TABLES.HIVST_RESULTS;
             try {
@@ -174,14 +181,14 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         }
     }
 
-    private static void createHivstResultRegistratioEventForClient(JSONObject jsonForm, String entityId, AllSharedPreferences allSharedPreferences) {
+    private static void createHivstResultRegistratioEventForClient(JSONObject jsonForm, String entityId, AllSharedPreferences allSharedPreferences, List<String> sourceFormSubmissionIds) {
         String kitCode = getFieldJSONObject(fields(jsonForm, STEP_ONE), "kit_code").optString("value", "");
         String collectionDate = getFieldJSONObject(fields(jsonForm, STEP_ONE), "collection_date").optString("value", "");
-        processRegistrationResult(entityId, allSharedPreferences, kitCode, "client", collectionDate);
+        processRegistrationResult(entityId, allSharedPreferences, kitCode, "client", collectionDate, sourceFormSubmissionIds);
     }
 
 
-    private static void createHivstResultRegistrationEventForExtraKits(JSONObject jsonForm, String entityId, AllSharedPreferences allSharedPreferences) throws Exception {
+    private static void createHivstResultRegistrationEventForExtraKits(JSONObject jsonForm, String entityId, AllSharedPreferences allSharedPreferences, List<String> sourceFormSubmissionIds) throws Exception {
         JSONArray vals = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_issued_for").getJSONArray("value");
         String kitCodeForPartner = getFieldJSONObject(fields(jsonForm, STEP_ONE), "sexual_partner_kit_code").optString("value", "");
         String kitCodeForPeer = getFieldJSONObject(fields(jsonForm, STEP_ONE), "peer_friend_kit_code").optString("value", "");
@@ -190,16 +197,25 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         for (int i = 0; i < vals.length(); i++) {
             String kitFor = vals.get(i).toString();
             if (kitFor.equalsIgnoreCase("sexual_partner")) {
-                processRegistrationResult(entityId, allSharedPreferences, kitCodeForPartner, "sexual_partner", collectionDate);
+                processRegistrationResult(entityId, allSharedPreferences, kitCodeForPartner, "sexual_partner", collectionDate, sourceFormSubmissionIds);
             } else if (kitFor.equalsIgnoreCase("peer_friend")) {
-                processRegistrationResult(entityId, allSharedPreferences, kitCodeForPeer, "peer_friend", collectionDate);
+                processRegistrationResult(entityId, allSharedPreferences, kitCodeForPeer, "peer_friend", collectionDate, sourceFormSubmissionIds);
             }
         }
 
     }
 
-    private static void processRegistrationResult(String entityId, AllSharedPreferences allSharedPreferences, String kitCode, String kitFor, String collectionDate) {
+    private static void processRegistrationResult(String entityId, AllSharedPreferences allSharedPreferences, String kitCode, String kitFor, String collectionDate, List<String> sourceFormSubmissionIds) {
         Event baseEvent = getBaseEvent(entityId, allSharedPreferences, Constants.EVENT_TYPE.HIVST_RESULTS_REGISTRATION);
+        if (sourceFormSubmissionIds != null) {
+            for (String sourceFormSubmissionId : sourceFormSubmissionIds) {
+                if (StringUtils.isBlank(sourceFormSubmissionId)) {
+                    continue;
+                }
+                baseEvent.addObs(new Obs().withFormSubmissionField("source_form_submission_id").withValue(sourceFormSubmissionId)
+                        .withFieldCode("source_form_submission_id").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
+            }
+        }
         baseEvent.addObs(new Obs().withFormSubmissionField("kit_for").withValue(kitFor)
                 .withFieldCode("kit_for").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
         baseEvent.addObs(new Obs().withFormSubmissionField("kit_code").withValue(kitCode)

@@ -20,6 +20,7 @@ public class DBConstants {
         public static final String KIT_CODES = "kit_codes";
         public static final String KIT_CODE = "kit_code";
         public static final String KIT_FOR = "kit_for";
+        public static final String SOURCE_FORM_SUBMISSION_ID = "source_form_submission_id";
         public static final String HIVST_RESULT = "hivst_result";
         public static final String CLIENT_TESTING_APPROACH = "client_testing_approach";
         public static final String MOBILIZATION_DATE = "mobilization_date";
