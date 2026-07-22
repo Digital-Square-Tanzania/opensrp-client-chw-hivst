@@ -60,6 +60,7 @@ public class BaseHivstResultsFragmentModel implements HivstResultsFragmentContra
         columnList.add(tableName + "." + DBConstants.KEY.KIT_FOR);
         columnList.add(tableName  + "." + DBConstants.KEY.HIVST_RESULT);
         columnList.add(tableName + "." + DBConstants.KEY.COLLECTION_DATE);
+        columnList.add(tableName + "." + DBConstants.KEY.SOURCE_FORM_SUBMISSION_ID);
 
         return columnList.toArray(new String[columnList.size()]);
 
