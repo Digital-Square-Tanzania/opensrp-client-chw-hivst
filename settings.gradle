@@ -1,1 +1,15 @@
+pluginManagement {
+    buildscript {
+        repositories {
+            mavenCentral()
+            maven {
+                url = uri("https://storage.googleapis.com/r8-releases/raw")
+            }
+        }
+        dependencies {
+            classpath "com.android.tools:r8:8.1.44"
+        }
+    }
+}
+
 include ':sample', ':opensrp-chw-hivst'
