@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "org.smartregister.malaria"
-        minSdkVersion androidMinSdkVersion
+        minSdkVersion 26
         targetSdkVersion androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
@@ -33,8 +33,11 @@ android {
 
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE.md'
         exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE.md'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/DEPENDENCIES'
@@ -52,6 +55,10 @@ android {
         abortOnError false
     }
 
+}
+
+configurations.all {
+    exclude group: 'com.google.guava', module: 'listenablefuture'
 }
 
 buildscript {
